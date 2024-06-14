@@ -1,0 +1,10 @@
+pandas
+streamlit>=1.20.0
+streamlit-aggrid
+openpyxl
+google-auth
+gspread
+datetime
+fuzzywuzzy
+gspread
+xlsxwriter
