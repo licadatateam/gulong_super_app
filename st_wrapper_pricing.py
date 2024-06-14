@@ -269,9 +269,9 @@ def preorder_calc(qty_list : list) -> bool or float:
         return np.NaN
     else:
         if np.nansum(qty_list) <= 4:
-            return True
+            return 'True'
         else:
-            return False
+            return 'False'
 
 def filter_data_captured(df_test : pd.DataFrame, 
                          tier : list) -> pd.DataFrame:
