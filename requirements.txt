@@ -8,3 +8,4 @@ datetime
 fuzzywuzzy
 gspread
 xlsxwriter
+extra_streamlit_components
