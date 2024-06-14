@@ -417,6 +417,8 @@ if __name__ == "__main__":
     # Load data
     # keys : df_final, cols_option, df_competitor, last_update
     data_dict = acquire_data()
+    # initialize session state
+    set_session_state(updated_at = data_dict['backend_last_update'])
     
     chosen_tab = stx.tab_bar(data = [
         stx.TabBarItemData(id = '1', title = 'Pricing', description = ''),
@@ -429,9 +431,7 @@ if __name__ == "__main__":
     # pricing
     if chosen_tab == '1':
         with placeholder:
-            # initialize session state
-            set_session_state(updated_at = data_dict['backend_last_update'])
-            
+        
             # displays update status of data displayed
             upd_btn, upd_data = st.sidebar.columns([2,3])
             with upd_btn:
