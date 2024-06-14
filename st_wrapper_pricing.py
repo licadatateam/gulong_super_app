@@ -1067,7 +1067,7 @@ if __name__ == "__main__":
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
                 
-                response = build_grid(df_show[df_show_cols + selected_cols])
+                response = build_grid(df_show)
                
                 supp_cols = st.columns([3,2])
                 with supp_cols[0]:
