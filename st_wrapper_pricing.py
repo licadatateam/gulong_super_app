@@ -1020,7 +1020,7 @@ if __name__ == "__main__":
             # select columns to show
             with st.expander('Include/remove columns in list:'):
                 beta_multiselect = st.container()
-                check_all = st.checkbox('Select all', value=True)
+                check_all = st.checkbox('Select all', value=False)
                 
                 supplier_list = st_wrapper_catalog.get_supplier_names()
                 
@@ -1067,7 +1067,7 @@ if __name__ == "__main__":
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
                 
-                response = build_grid(df_show)
+                response = build_grid(df_show[df_show_cols + selected_cols])
                
                 supp_cols = st.columns([3,2])
                 with supp_cols[0]:
