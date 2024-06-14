@@ -309,11 +309,12 @@ def build_grid(df_show : pd.DataFrame):
     
     '''
     gb = GridOptionsBuilder.from_dataframe(df_show)
-    gb.configure_columns(autoSizeAllColumns = True)
+    gb.configure_columns(autoSizeAllColumns = True,
+                         filterable = True)
     gb.configure_default_column(enablePivot=False, 
                                 enableValue=False, 
                                 enableRowGroup=False, 
-                                editable = True)
+                                editable = True
     def_col = 'model' if 'sku_name' not in df_show.columns else 'sku_name'
     gb.configure_column(def_col, headerCheckboxSelection = True,
                         pinned = True)
