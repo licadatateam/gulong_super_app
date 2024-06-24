@@ -92,7 +92,7 @@ def fix_names(sku_name, comp=None):
                         }
     
     if pd.isna(sku_name) or (sku_name is None):
-        return np.NaN
+        return np.nan
     
     else:
         # uppercase and remove double spaces
@@ -224,7 +224,7 @@ def clean_width(w, model = None):
     '8.25'
     >>> clean_width('P265.5')
     'P265.5'
-    >>> clean_width(np.NaN)
+    >>> clean_width(np.nan)
     nan
     
     '''
@@ -238,16 +238,16 @@ def clean_width(w, model = None):
             prefix = w.split(num_str)[0]
             return prefix + num
         else:
-            return np.NaN
+            return np.nan
     else:
         if model is None:
-            return np.NaN
+            return np.nan
         else:
             try:
                 width = model.split('/')[0].split(' ')[-1].strip().upper()
                 return clean_width(width)   
             except:
-                return np.NaN
+                return np.nan
 
 def clean_aspect_ratio(ar, model = None):
     
@@ -273,7 +273,7 @@ def clean_aspect_ratio(ar, model = None):
     '9.5'
     >>> clean_aspect_ratio('14.50')
     '14.5'
-    >>> clean_aspect_ratio(np.NaN)
+    >>> clean_aspect_ratio(np.nan)
     'R'
     
     '''
@@ -343,7 +343,7 @@ def clean_diameter(d):
     'R22.5'
     >>> clean_diameter('15')
     'R15'
-    >>> clean_diameter(np.NaN)
+    >>> clean_diameter(np.nan)
     nan
     
     '''
@@ -356,10 +356,10 @@ def clean_diameter(d):
             suffix = num_suffix[0].split(num_str)[-1]
             return f'R{num}{suffix}'
         else:
-            return np.NaN
+            return np.nan
         
     else:
-        return np.NaN
+        return np.nan
 
 
 
@@ -401,11 +401,11 @@ def clean_speed_rating(sp):
         elif sp == '0':
             return 'B'
         elif sp == '-':
-            return np.NaN
+            return np.nan
         else:
             return sp
     else:
-        return np.NaN
+        return np.nan
 
 
 def combine_sku(make, w, ar, d, model, load, speed):
@@ -424,8 +424,8 @@ def combine_sku(make, w, ar, d, model, load, speed):
         SKU = ' '.join([make, specs])
     
     finally:
-        if (load in ['nan', np.NaN, None, '-', '']) or \
-            (speed in ['nan', np.NaN, None, '', '-']):
+        if (load in ['nan', np.nan, None, '-', '']) or \
+            (speed in ['nan', np.nan, None, '', '-']):
             pass
         else:
             SKU = SKU + ' ' + load + speed
@@ -499,7 +499,7 @@ def clean_price(x : str) -> str:
     Cleans price string values from scraped entries
     '''
     if pd.isna(x):
-        return np.NaN
+        return np.nan
     else:
         # baseline correct
         x = str(x).upper().strip()
@@ -570,7 +570,7 @@ def clean_make(x, makes, model = None):
             return x
     else:
         # if input is NaN
-        return np.NaN
+        return np.nan
 
 def clean_model(x : str, 
                 ref : None,
@@ -579,7 +579,7 @@ def clean_model(x : str,
     Extracts cleaned tire model from product title
     '''
     if pd.isna(x):
-        return np.NaN
+        return np.nan
     else:
         # baseline correction
         x = x.upper().strip()
@@ -619,12 +619,12 @@ def clean_model(x : str,
             
         return x
     
-def clean_year(y : str or int) -> [np.NaN, str]:
+def clean_year(y : str or int) -> [np.nan, str]:
     '''
     Cleans input year to resolve out of range values
     '''
     if pd.isna(y) or (y is None):
-        result = np.NaN
+        result = np.nan
     
     else:
         str_num = re.sub("'", "", str(y)).strip()
@@ -642,6 +642,6 @@ def clean_year(y : str or int) -> [np.NaN, str]:
             result = '20' + str_num
         
         else:
-            result = np.NaN
+            result = np.nan
     
     return result
