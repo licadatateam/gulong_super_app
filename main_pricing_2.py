@@ -21,7 +21,7 @@ def get_GP(qsupp, qsp):
     try:
         return round(100*(float(qsp)/float(qsupp) - 1), 2)
     except:
-        return np.NaN
+        return np.nan
 
 def ceil_5(n):
     '''
