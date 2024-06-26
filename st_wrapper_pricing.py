@@ -1051,7 +1051,7 @@ if __name__ == "__main__":
                                  'brand'] + qty_supp + price_supp
                 
                 df_show = df_show.merge(df_supplier[supplier_cols],
-                                        how = 'left',
+                                        how = 'right',
                                         left_on = ['pattern', 'dimensions', 
                                                    'make'],
                                         right_on = ['similar_pattern', 'correct_specs', 
