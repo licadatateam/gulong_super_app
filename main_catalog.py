@@ -95,13 +95,13 @@ def name_match(s, ref,
             try:
                 brand = ref.loc[match[-1], 'brand']
             except:
-                brand = np.NaN
+                brand = np.nan
         else:
-            result = np.NaN
-            brand = np.NaN
+            result = np.nan
+            brand = np.nan
     except:
-        result = np.NaN
-        brand = np.NaN
+        result = np.nan
+        brand = np.nan
     
     if with_brand:
         return pd.Series([result, brand])
@@ -225,7 +225,7 @@ def extract_supplier_data(file : str or pd.DataFrame,
     
     # 2. clean worksheet and extract data
     ## clean whitespace
-    ws = ws.replace('^(\s)*$', np.NaN, regex = True)
+    ws = ws.replace('^(\s)*$', np.nan, regex = True)
     
     # 3. clean worksheet dataframe
     df = supplier_clean(ws, supplier = supplier,
