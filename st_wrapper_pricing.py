@@ -1059,7 +1059,6 @@ if __name__ == "__main__":
                                         suffixes = ('', '_')).drop_duplicates()
                 df_show = df_show.dropna(axis=0, 
                                          subset = ['model', 'activity'],
-                                         how = 'all',
                                          ignore_index = True)
                 selected_cols.extend(qty_supp + price_supp)
             
@@ -1070,6 +1069,7 @@ if __name__ == "__main__":
                 drop_cols = ['brand', 'correct_specs']
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
+                df_show = df_show.rename(columns = {'model' : 'sku_name'})
                 
                 response = build_grid(df_show)
                
