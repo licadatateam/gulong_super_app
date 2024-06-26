@@ -261,12 +261,12 @@ def preorder_calc(qty_list : list) -> bool or float:
     
     Returns:
     --------
-        - bool or float : True/False or np.NaN if quantity data is all NaN
+        - bool or float : True/False or np.nan if quantity data is all NaN
     
     '''
     nan_count = np.sum([1 for n in qty_list if pd.isna(n)])
     if nan_count == len(qty_list):
-        return np.NaN
+        return np.nan
     else:
         if np.nansum(qty_list) <= 4:
             return 'True'
@@ -624,7 +624,7 @@ if __name__ == "__main__":
                         # clean
                         df = df.drop(['make', 'dimensions', 
                                       'pattern'], axis = 1).set_index('sku_name')
-                        df = df.replace('', np.NaN).dropna(axis=1, how='all')
+                        df = df.replace('', np.nan).dropna(axis=1, how='all')
                         for c in ["rowIndex", "_selectedRowNodeInfo"]:
                             try:
                                 df = df.drop(c, axis = 1)
