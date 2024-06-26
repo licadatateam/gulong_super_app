@@ -1057,9 +1057,9 @@ if __name__ == "__main__":
                                         right_on = ['similar_pattern', 'correct_specs', 
                                                     'brand'],
                                         suffixes = ('', '_')).drop_duplicates()
-                df_show = df_show.dropna(axis=0, 
-                                         subset = ['model', 'activity'],
-                                         ignore_index = True)
+                #df_show = df_show.dropna(axis=0, 
+                #                         subset = ['model', 'activity'],
+                #                         ignore_index = True)
                 selected_cols.extend(qty_supp + price_supp)
             
                 qty_cols = [c for c in df_show.columns if 'qty_' in c]
