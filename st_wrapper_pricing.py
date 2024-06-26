@@ -1066,7 +1066,7 @@ if __name__ == "__main__":
                 df_show['preorder'] = df_show.apply(lambda x: preorder_calc(x[qty_cols]), axis=1)
                 
                 # build and show table
-                drop_cols = ['brand', 'correct_specs']
+                drop_cols = ['brand']
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
                 df_show = df_show.rename(columns = {'model' : 'sku_name'})
