@@ -304,8 +304,8 @@ def match_df(df1, df2):
     '''
     
     # merge
-    merged = df1.merge(df2, left_on = ['name', 'correct_specs', 'brand'],
-                    right_on = ['similar_pattern', 'correct_specs', 'brand']).drop_duplicates()
+    merged = df1.merge(df2, left_on = ['similar_pattern', 'correct_specs', 'brand'],
+                    right_on = ['name', 'correct_specs', 'brand']).drop_duplicates()
 
     merged = merged.drop(columns = ['pattern', 'similar_pattern',
                                     'size', 'max'],
