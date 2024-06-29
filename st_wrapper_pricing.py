@@ -138,7 +138,7 @@ def set_session_state(updated_at : str = None):
     if 'adjusted' not in st.session_state:
         st.session_state['adjusted'] = False
     
-    if 'chosen_tab' not in st.sessions_state:
+    if 'chosen_tab' not in st.session_state:
         st.session_state['chosen_tab'] = '1'
     
     if 'updated_at' not in st.session_state:
