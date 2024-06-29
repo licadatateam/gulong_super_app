@@ -1055,7 +1055,7 @@ if __name__ == "__main__":
                             if f'qty_{s}' in df_supplier.columns]
                 price_supp = [f'price_{s}' for s in list(df_supplier.supplier.unique()) \
                               if f'price_{s}' in df_supplier.columns]
-                supplier_cols = ['brand', 'similar_pattern', 'correct_specs',
+                supplier_cols = ['brand', 'correct_specs', 'similar_pattern',
                                  ] + qty_supp + price_supp
                 
                 df_show = df_show.merge(df_supplier[supplier_cols],
