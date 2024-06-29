@@ -1064,7 +1064,7 @@ if __name__ == "__main__":
                                                    'make'],
                                         right_on = ['similar_pattern', 'correct_specs', 
                                                     'brand'],
-                                        suffixes = ('', '_')).drop_duplicates()
+                                        suffixes = ('_x', '_y')).drop_duplicates()
 
                 selected_cols.extend(qty_supp + price_supp)
             
