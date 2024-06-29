@@ -137,7 +137,10 @@ def set_session_state(updated_at : str = None):
     
     if 'adjusted' not in st.session_state:
         st.session_state['adjusted'] = False
-        
+    
+    if 'chosen_tab' not in st.sessions_state:
+        st.session_state['chosen_tab'] = '1'
+    
     if 'updated_at' not in st.session_state:
         update()
 
@@ -421,11 +424,16 @@ if __name__ == "__main__":
     # initialize session state
     set_session_state(updated_at = data_dict['backend_last_update'])
     
+    
+    def_tab = '1' if st.session_state['chosen_tab'] is None else st.session_state['chosen_tab']
+    
     chosen_tab = stx.tab_bar(data = [
         stx.TabBarItemData(id = '1', title = 'Pricing', description = ''),
         stx.TabBarItemData(id = '2', title = 'Stock Level Check', description = ''),
         stx.TabBarItemData(id = '3', title = 'SKU Matching', description = ''),
-        ], default = '1')
+        ], default = def_tab)
+    
+    st.session_state['chosen_tab'] = chosen_tab
     
     placeholder = st.container()
     
@@ -1057,20 +1065,19 @@ if __name__ == "__main__":
                                         right_on = ['similar_pattern', 'correct_specs', 
                                                     'brand'],
                                         suffixes = ('', '_')).drop_duplicates()
-                #df_show = df_show.dropna(axis=0, 
-                #                         subset = ['model', 'activity'],
-                #                         ignore_index = True)
+
                 selected_cols.extend(qty_supp + price_supp)
             
                 qty_cols = [c for c in df_show.columns if 'qty_' in c]
                 df_show['preorder'] = df_show.apply(lambda x: preorder_calc(x[qty_cols]), axis=1)
                 
                 # build and show table
-                drop_cols = ['brand', 'dimensions']
+                drop_cols = ['make', 'dimensions']
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
-                df_show = df_show.rename(columns = {'model' : 'sku_name',
-                                                   'correct_specs' : 'dimensions'})
+                df_show = df_show.rename(columns = {'brand' : 'make',
+                                                    'model' : 'sku_name',
+                                                    'correct_specs' : 'dimensions'})
                 
                 response = build_grid(df_show)
                
