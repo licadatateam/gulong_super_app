@@ -1055,7 +1055,7 @@ if __name__ == "__main__":
                             if f'qty_{s}' in df_supplier.columns]
                 price_supp = [f'price_{s}' for s in list(df_supplier.supplier.unique()) \
                               if f'price_{s}' in df_supplier.columns]
-                supplier_cols = ['brand', 'correct_specs', 'similar_pattern',
+                supplier_cols = ['brand', 'correct_specs', 'similar_pattern', 'pattern',
                                  ] + qty_supp + price_supp
                 
                 df_show = df_show.merge(df_supplier[supplier_cols],
@@ -1072,11 +1072,11 @@ if __name__ == "__main__":
                 df_show['preorder'] = df_show.apply(lambda x: preorder_calc(x[qty_cols]), axis=1)
                 
                 # build and show table
-                drop_cols = ['make', 'dimensions', 'pattern']
+                drop_cols = ['make', 'dimensions', 'pattern_x', 'similar_pattern']
                 df_show = df_show.drop(labels = drop_cols,
                                        axis = 1)
                 df_show = df_show.rename(columns = {'brand' : 'make',
-                                                    'similar_pattern' : 'pattern',
+                                                    'pattern_y' : 'pattern',
                                                     'model' : 'sku_name',
                                                     'correct_specs' : 'dimensions'})
                 
