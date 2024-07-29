@@ -98,7 +98,7 @@ def update():
     del st.session_state['GP_15']
     del st.session_state['GP_20a']
     del st.session_state['GP_20b']
-    st.experimental_rerun()
+    st.rerun()
 
 def set_session_state(updated_at : str = None):
     '''
