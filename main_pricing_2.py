@@ -17,9 +17,9 @@ def get_GP(qsupp, qsp):
     '''
     Computes gross profit wrt supplier price (qsupp)
     '''
-    #return round(100*(1- (float(qsupp)/float(qsp))), 2)
     try:
-        return round(100*(float(qsp)/float(qsupp) - 1), 2)
+        #return round(100*(float(qsp)/float(qsupp) - 1), 2
+        return round(100*(1- (float(qsupp)/float(qsp))), 2)
     except:
         return np.nan
 
