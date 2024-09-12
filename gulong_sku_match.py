@@ -38,7 +38,8 @@ def import_sheet(url, creds):
     # open worksheet
     working_sheet = sh.worksheet(sh.worksheets()[0].title)
     # convert worksheet to  dataframe
-    pre_df = pd.DataFrame.from_records(working_sheet.get_all_records()).replace('', np.nan)
+    with pd.option_context("future.no_silent_downcasting", True):
+        pre_df = pd.DataFrame.from_records(working_sheet.get_all_records()).replace('', np.nan).infer_objects(copy = False)
     
     return pre_df
 
