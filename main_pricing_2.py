@@ -186,8 +186,8 @@ def import_competitor_data():
                                    'qty_tiremanila', 'year']]
     df_competitor.columns = ['model', 'GoGulong','TireManila', 'PartsPro', 
                              'qty_tiremanila', 'year']
-    
-    df_competitor = df_competitor.replace('', np.nan)
+    with pd.option_context("future.no_silent_downcasting", True):
+        df_competitor = df_competitor.replace('', np.nan).infer_objects(copy = False)
     df_competitor['GoGulong_slashed'] = df_competitor['GoGulong'].apply(lambda x: float(x)/0.8)
     
     return df_competitor, latest_sheet
